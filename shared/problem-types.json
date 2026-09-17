@@ -1,0 +1,6 @@
+[
+  { "slug": "common/internal-error", "status": 500, "title": "Internal error" },
+  { "slug": "common/not-found",      "status": 404, "title": "Not found" },
+  { "slug": "common/validation",     "status": 400, "title": "Validation failed" },
+  { "slug": "common/rate-limited",   "status": 429, "title": "Too many requests" }
+]
