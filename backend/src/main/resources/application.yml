@@ -1,0 +1,22 @@
+server:
+  port: ${PORT:8080}
+  forward-headers-strategy: framework
+
+spring:
+  application.name: anevaino
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/anevaino}
+    username: ${SPRING_DATASOURCE_USERNAME:anevaino}
+    password: ${SPRING_DATASOURCE_PASSWORD:anevaino}
+    hikari:
+      maximum-pool-size: 5
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+  mvc:
+    problemdetails:
+      enabled: false
