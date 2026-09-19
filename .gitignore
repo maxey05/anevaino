@@ -1,19 +1,24 @@
 .env*
 !.env.example
+
 backend/build/
 backend/.gradle/
+backend/bin/
 *.class
+.kotlin/
+
 frontend/node_modules/
 frontend/dist/
 frontend/test-results/
 frontend/playwright-report/
+
 .idea/
 .vscode/
 .DS_Store
 Claude outputs
 documentation
 CLAUDE.md
-.kotlin/
+
 .gradle/
 build/
 bin/
