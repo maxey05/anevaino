@@ -70,7 +70,7 @@ class GoogleIdTokenVerifier(
 
     private class AudienceValidator(private val clientId: String) : OAuth2TokenValidator<Jwt> {
         override fun validate(token: Jwt): OAuth2TokenValidatorResult =
-            if (clientId.isNotBlank() && token.audience.contains(clientId)) {
+            if (clientId.isNotBlank() && token.audience?.contains(clientId) == true) {
                 OAuth2TokenValidatorResult.success()
             } else {
                 OAuth2TokenValidatorResult.failure(OAuth2Error("invalid_token", "Unexpected audience", null))
