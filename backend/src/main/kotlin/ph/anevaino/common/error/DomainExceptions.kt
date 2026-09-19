@@ -22,3 +22,14 @@ class ParseFailure(
     detail: String,
     extensions: Map<String, Any?> = emptyMap(),
 ) : AnevainoException(ProblemType.VALIDATION, detail, extensions)
+
+class InvalidToken(detail: String) : AnevainoException(ProblemType.AUTH_INVALID_TOKEN, detail)
+
+class NonDlsuAccount(detail: String) : AnevainoException(ProblemType.AUTH_NON_DLSU, detail)
+
+class Unauthenticated(detail: String) : AnevainoException(ProblemType.AUTH_UNAUTHENTICATED, detail)
+
+class RateLimited(
+    detail: String,
+    val retryAfterSeconds: Long,
+) : AnevainoException(ProblemType.RATE_LIMITED, detail)
