@@ -7,9 +7,11 @@ import org.slf4j.LoggerFactory
 import org.slf4j.MDC
 import org.springframework.core.Ordered
 import org.springframework.core.annotation.Order
+import org.springframework.security.core.context.SecurityContextHolder
 import org.springframework.stereotype.Component
 import org.springframework.web.filter.OncePerRequestFilter
 import org.springframework.web.servlet.HandlerMapping
+import java.security.Principal
 import java.util.UUID
 
 private const val REQUEST_ID_HEADER = "X-Request-Id"
@@ -33,13 +35,17 @@ class RequestIdFilter : OncePerRequestFilter() {
             val pathTemplate = req.getAttribute(HandlerMapping.BEST_MATCHING_PATTERN_ATTRIBUTE) as? String ?: "unmapped"
             val durationMs = (System.nanoTime() - start) / 1_000_000
             log.info(
-                "method={} path={} status={} durationMs={}", 
+                "method={} path={} status={} durationMs={} userId={}",
                 req.method,
                 pathTemplate,
                 res.status,
                 durationMs,
+                currentUserId(),
             )
-            MDC.remove("requestId") 
+            MDC.remove("requestId")
         }
     }
+
+    private fun currentUserId(): String =
+        (SecurityContextHolder.getContext().authentication?.principal as? Principal)?.name ?: "anonymous"
 }
