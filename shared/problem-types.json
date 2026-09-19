@@ -2,5 +2,9 @@
   { "slug": "common/internal-error", "status": 500, "title": "Internal error" },
   { "slug": "common/not-found",      "status": 404, "title": "Not found" },
   { "slug": "common/validation",     "status": 400, "title": "Validation failed" },
-  { "slug": "common/rate-limited",   "status": 429, "title": "Too many requests" }
+  { "slug": "common/rate-limited",   "status": 429, "title": "Too many requests" },
+  { "slug": "auth/invalid-token",    "status": 400, "title": "Invalid sign-in token" },
+  { "slug": "auth/non-dlsu-account", "status": 403, "title": "Account not allowed" },
+  { "slug": "auth/unauthenticated",  "status": 401, "title": "Not signed in" },
+  { "slug": "auth/forbidden",        "status": 403, "title": "Forbidden" }
 ]
